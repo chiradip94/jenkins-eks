@@ -28,7 +28,7 @@ resource "null_resource" "update_kubeconfig" {
 
 resource "null_resource" "install_jenkins" {
   provisioner "local-exec" {
-    command = "helm install jenkins-server ../helm -n tools --create-namespace"
+    command = "helm install jenkins-server ../helm -n ${var.jenkins_namespace} --create-namespace"
     interpreter = ["PowerShell", "-Command"]
   }
   depends_on = [
