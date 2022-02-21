@@ -1,0 +1,23 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ include "jenkins-server.fullname" . }}
+rules:
+- apiGroups: [""] # "" indicates the core API group
+  resources: ["pods"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ include "jenkins-server.fullname" . }}
+subjects:
+# You can specify more than one "subject"
+- kind: ServiceAccount
+  name: {{ include "jenkins-server.serviceAccountName" . }}
+roleRef:
+  kind: Role 
+  name: {{ include "jenkins-server.fullname" . }}
+  apiGroup: rbac.authorization.k8s.io
