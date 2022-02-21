@@ -51,3 +51,9 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "jenkins_namespace" {
+  description = "K8s Namespace for jenkins deployment"
+  type        = string
+  default     = "tools"
+}
