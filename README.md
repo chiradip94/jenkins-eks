@@ -25,6 +25,7 @@ Terraform code that deploys EKS and installs Jenkins server using helm charts.
 To deploy EKS cluster and Jenkins the following command is to be executed:
 
 1. ```
+   cd terraform
    terraform init
    ```
 
