@@ -31,15 +31,13 @@ To deploy EKS cluster and Jenkins the following command is to be executed:
 2. ```
    terraform plan \
    -var 'vpc_id=vpc-xxxxxx' \
-   -var 'subnet_ids=["subnet-xxxxx", "subnet-yyyyy", "subnet-zzzzz"]'
+   -var 'subnet_ids=["subnet-xxxxx", "subnet-yyyyy", "subnet-zzzzz"]' \
+   -out terraform.tfplan
    ``` 
    - Validate the resources which will be created.
 
 3. ``` 
-   terraform apply \
-   -var 'vpc_id=vpc-xxxxxx' \
-   -var 'subnet_ids=["subnet-xxxxx", "subnet-yyyyy", "subnet-zzzzz"]' \
-   --auto-approve
+    terraform apply "terraform.tfplan"
    ```
 
 4. Access the Jenkins server using the loadbalancer created with port 8080.<br>
