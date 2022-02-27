@@ -57,3 +57,15 @@ variable "jenkins_namespace" {
   type        = string
   default     = "tools"
 }
+
+variable "chart_name" {
+  description = "Name of the helm chart to be deployed"
+  type        = string
+  default     = "jenkins-server"
+}
+
+variable "instance_types" {
+  description = "Type of worker node instances"
+  type        = list(list(string))
+  default     = [["t3.medium","t3.small"],["t3.medium"]]
+}

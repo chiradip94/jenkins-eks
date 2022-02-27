@@ -45,3 +45,9 @@ variable "max_unavailable" {
   type        = string
   default     = "2"
 }
+
+variable "instance_types" {
+  description = "Type of worker node instances"
+  type        = list(string)
+  default     = ["t3.medium"]
+}
