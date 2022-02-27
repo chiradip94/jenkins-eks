@@ -14,7 +14,7 @@ Terraform code that deploys EKS and installs Jenkins server using helm charts.
 ## Prerequisites
 - VPC
 - subnets (public or private with nat gateways in case deployed from server within VPC).
-- workstation/server having terraform and helm installed
+- workstation/server having terraform installed
 
 ## Features
 - Deploys EKS with configurable version in a VPC and subnets provided.
@@ -44,8 +44,10 @@ To deploy EKS cluster and Jenkins the following command is to be executed:
 
 4. Access the Jenkins server using the loadbalancer created with port 8080.<br>
    Get the admin password using the following command.
+   > aws eks update-kubeconfig --name "tools-cluster"
    > kubectl exec --namespace tools -it svc/jenkins-server -c jenkins -- /bin/cat /run/secrets/chart-admin-password
 
+   Replace the cluster name if you used a different name.<br>
    Replace the namespace if you used a different namespace.<br>
    Use admin as user and the password from the above command.
 
