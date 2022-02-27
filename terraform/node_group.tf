@@ -45,5 +45,10 @@ resource "helm_release" "jenkins-server" {
   chart             = "../helm"
   namespace         = var.jenkins_namespace
   create_namespace  = true
-  depends_on = [ module.node_group ]
+  depends_on = [ 
+    aws_eks_cluster.this,
+    module.nodegroup_role,
+    module.cluster_role,
+    module.cluster_sg
+  ]
 }
